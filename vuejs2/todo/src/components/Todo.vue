@@ -7,6 +7,7 @@
 </template>
 
 <script>
+
 export default {
   props: {
     todo: {
@@ -19,7 +20,7 @@ export default {
       this.todo.completed = !this.todo.completed;
     },
     removeTodo() {
-      this.$emit('removeTodo', this.todo.id);
+      this.$store.dispatch('removeTodo', this.todo.id);
     }
   }
 };

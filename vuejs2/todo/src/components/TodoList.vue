@@ -3,7 +3,7 @@
     <input v-model="newTodo" @keyup.enter="addTodo" placeholder="Add a new todo">
     <ul>
       <li v-for="todo in todos" :key="todo.id">
-        <Todo :todo="todo" @removeTodo="removeTodo" />
+        <Todo :todo="todo" />
       </li>
     </ul>
   </div>
@@ -19,7 +19,6 @@ export default {
   data() {
     return {
       newTodo: '',
-      todos: []
     };
   },
   methods: {
@@ -30,12 +29,14 @@ export default {
           text: this.capitalize(this.newTodo),
           completed: false
         };
-        this.todos.push(todo);
+        this.$store.dispatch('addTodo', todo);
         this.newTodo = '';
       }
     },
-    removeTodo(todoId) {
-      this.todos = this.todos.filter(todo => todo.id !== todoId);
+  },
+  computed: {
+    todos() {
+      return this.$store.state.todos;
     }
   }
 };
