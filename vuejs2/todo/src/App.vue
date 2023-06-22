@@ -1,22 +1,25 @@
-<script setup>
-
-</script>
-
 <template>
-
+  <div>
+    <h1>Todo List</h1>
+    <TodoList />
+  </div>
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+<script>
+import TodoList from './components/TodoList.vue';
+
+export default {
+  components: {
+    TodoList
+  }
+};
+</script>
+
+<style>
+#app {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
 }
 </style>
